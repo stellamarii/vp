@@ -15,6 +15,14 @@
   elseif($hournow >= 18 and $hournow < 23) {
 	$partofday = "õhtu";
   }
+  
+  //jälgime semestri kulgu
+  $semstart = new DateTime("2020-8-31");
+  $semend = new DateTime("2020-12-13");
+  $semdur = $semstart->diff($semend);
+  $today = new DateTime("now");
+  $fromsemstart = $semstart->diff($today); //aja erinevus objektina
+  $fromsemstartdays = $fromsemstart->format("%r%a");
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +35,7 @@
 <body>
 <img src="../pildid/vp_banner.png" alt="Veebiproge kursuse bänner" >
   <h1><?php echo $uname; ?> programmeerib veebi!</h1>
-  <p>Lehe avamise aeg on <?php echo $time; ?></p>
+  <p>Lehe avamise aeg on <?php echo $time .", semestri algusest on möödunud " .$fromsemstartdays ." päeva"; ?></p>
   <p>Parajasti on <?php echo $partofday; ?>!</p>
   <p><?php echo "Parajasti on " .$partofday ."."; ?></p>
   <p>See veebileht on loodud õppetöö käigus ning ei sisalda mingit tõsiseltvõetavat sisu!</p>
