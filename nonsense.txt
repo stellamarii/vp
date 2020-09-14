@@ -1,0 +1,4 @@
+Nonsense mõtted 
+
+CREATE TABLE `if20_stella_3`.`nonsense` ( `id` INT(4) NOT NULL AUTO_INCREMENT , `nonsenseidea` VARCHAR(256) NOT NULL , `deleted` DATETIME NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
