@@ -1,14 +1,20 @@
 <?php
-	//loeme andmebaasi login ifo muutujad
 	require("../../../config.php");
-	//kui kasutaja on vormis andmeid saatnud, siis salvestame andmebaasi
-	//$database = "if20_rinde_3";
 	require("fnc_film.php");
-	//nupu klikkides kontrollime ja salvestame
 	$inputerror="";
 	$title="";
+	$year=date("Y");
+	$duration="80";
+	$genre="";
+	$studio="";
+	$director="";
 	if(isset($_POST["filmsubmit"])){
 		$title=$_POST["titleinput"];
+		$year=$_POST["yearinput"];
+		$duration=$_POST["durationinput"];
+		$genre=$_POST["genreinput"];
+		$studio=$_POST["studioinput"];
+		$director=$_POST["directorinput"];
 		if(empty($_POST["titleinput"]) or empty($_POST["genreinput"]) or empty($_POST["studioinput"]) or empty($_POST["directorinput"])){
 			$inputerror .= "Osa vajalikku infot on sisestamata! ";
 		}
@@ -22,42 +28,41 @@
 			writefilm($_POST["titleinput"], $_POST["yearinput"], $_POST["durationinput"], $_POST["genreinput"], $_POST["studioinput"], $_POST["directorinput"]);
 		}
 	}
-
-	$nimi = "Stella-Marii";
-
 	require("header.php");
 ?>
 
-	<p>See veebileht on loodud õppetöö käigus ning ei sisalda mingit tõsiseltvõetavat sisu!</p>
-	<p>Leht on loodud veebiprogrammeerimise kursusel <a href="http://www.tlu.ee">Tallinna Ülikooli</a> Digitehnoloogiate instituudis.</p>
 	<hr>
-	<ul>
+    <ul>
 		<li><a href="uus.php">Avalehele</a></li>
+		<li><a href="filmnimekiri.php">Filmiinfo</a></li>
 	</ul>
+	
 	<hr>
-
 	<form method="POST">
 		<label for="titleinput">Filmi pealkiri: </label>
 		<input type="text" name="titleinput" id="titleinput" placeholder="Pealkiri" value="<?php echo $title; ?>">
 		<br>
 		<label for="yearinput">Filmi valmimisaasta: </label>
-		<input type="number" name="yearinput" id="yearinput" value="<?php echo date("Y"); ?>">
+		<input type="number" name="yearinput" id="yearinput" value="<?php echo $year; ?>">
 		<br>
 		<label for="durationinput">Filmi kestus: </label>
-		<input type="number" name="durationinput" id="durationinput" value="80">
+		<input type="number" name="durationinput" id="durationinput" value="<?php echo $duration; ?>">
 		<br>
 		<label for="genreinput">Filmi žanr: </label>
-		<input type="text" name="genreinput" id="genreinput" placeholder="Žanr">
+		<input type="text" name="genreinput" id="genreinput" placeholder="Žanr" value="<?php echo $genre; ?>">
 		<br>
 		<label for="studioinput">Filmi tootja/stuudio: </label>
-		<input type="text" name="studioinput" id="studioinput" placeholder="Tootja/stuudio">
+		<input type="text" name="studioinput" id="studioinput" placeholder="Tootja/stuudio" value="<?php echo $studio; ?>">
 		<br>
 		<label for="directorinput">Filmi lavastaja: </label>
-		<input type="text" name="directorinput" id="directorinput" placeholder="Eesnimi Perenimi">
+		<input type="text" name="directorinput" id="directorinput" placeholder="Eesnimi Perenimi" value="<?php echo $director; ?>">
 		<br>
 		<input type="submit" name="filmsubmit" value="Salvesta">
 	</form>
 	<p><?php echo $inputerror; ?></p>
-
+	
+	<hr>
+	<p>See veebileht on loodud õppetöö käigus ning ei sisalda mingit tõsiseltvõetavat sisu!</p>
+	<p>Leht on loodud veebiprogrammeerimise kursusel <a href="http://www.tlu.ee">Tallinna Ülikooli</a> Digitehnoloogiate instituudis.</p>
 </body>
 </html>
