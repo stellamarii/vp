@@ -44,27 +44,4 @@
 		$stmt->close();
 		$conn->close();
 	}
-
-	function filmdrop(){
-		$conn = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		$stmt = $conn->prepare("SELECT movie_id, title FROM movie");
-		echo $conn->error;
-		$stmt->bind_result($filmidfromdb, $filmpealkirifromdb);
-		$stmt->execute();
-		$filmlist = "";
-		while($stmt->fetch()){
-			$filmlist .= "\n \t \t " .'<option value="' .$filmidfromdb .'">' .$filmpealkirifromdb .'<option>';
-		}
-		$stmt->close();
-		$conn->close();
-		return $filmlist;
-		
-		
-		
-		
-	
-	
-	
-	
-	}
 ?>

@@ -40,7 +40,8 @@
 		<hr>
 		<li><a href="filmlisa.php">Filmiinfo lisamine</a></li>
 		<li><a href="filmnimekiri.php">Filmiinfo</a></li>
-		<li><a href="filmiseosed.php">Filmide seosed</a></li>
+		<li><a href="filmseosed.php">Filmide seosed</a></li>
+		<li><a href="näitlejateandmed.php">Näitlejate andmed</a></li>
 		<li><a href="http://greeny.cs.tlu.ee/phpmyadmin">Andmebaasid</a></li>
 	</ul>
 	
